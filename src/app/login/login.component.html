@@ -1,0 +1,37 @@
+<div class="global-container">
+    <img src="./assets/images/logo.png">
+    <div class="card login-form">
+        <div class="card-body">
+
+            <h3 class="card-title text-center">Please Login First</h3>
+            <div class="card-text">
+                <form [formGroup]="form_login" (ngSubmit)="submitForm()">
+                    <div class="form-group">
+                        <label for="userNameInput">Username</label>
+                        <input type="text" id="userNameInput" formControlName="userNameInput" class="form-control"
+                               [ngClass]="{ 'is-invalid': submitted && obj_form.userNameInput.errors }"/>
+                        <div *ngIf="submitted && obj_form.userNameInput.errors" class="invalid-feedback">
+                            <div *ngIf="obj_form.userNameInput.errors.required">First Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="passwordInput" class="form-control" [ngClass]="{ 'is-invalid': submitted && obj_form.passwordInput.errors }" />
+                        <div *ngIf="submitted && obj_form.passwordInput.errors" class="invalid-feedback">
+                            <div *ngIf="obj_form.passwordInput.errors.required">Password is required</div>
+                            <div *ngIf="obj_form.passwordInput.errors.minlength">Password must be at least 6 characters
+                            </div>
+                            <div *ngIf="obj_form.passwordInput.errors.maxlength">Maximum password length is 20
+                                characters
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Sign in <span *ngIf="loading"
+                                                                                          style="margin-left: 3px"
+                                                                                          class="spinner-border spinner-border-sm mr-1"></span></button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

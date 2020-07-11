@@ -1,0 +1,54 @@
+<div class="container">
+        <div class="card">
+            <div class="card-header" style="background: #f50057; color: #ffffff">
+               <i class="fa fa-plus"></i> Add User
+            </div>
+            <div class="card-body" style="margin-top: -40px">
+                <form [formGroup]="form_register" (ngSubmit)="submitForm()">
+                    <div class="form-group">
+                        <label for="userNameInput">Username</label>
+                        <input type="text" id="userNameInput" formControlName="userNameInput" class="form-control"
+                               [ngClass]="{ 'is-invalid': submitted && obj_form.userNameInput.errors }"/>
+                        <div *ngIf="submitted && obj_form.userNameInput.errors" class="invalid-feedback">
+                            <div *ngIf="obj_form.userNameInput.errors.required">Username is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="passwordInput" class="form-control" [ngClass]="{ 'is-invalid': submitted && obj_form.passwordInput.errors }" />
+                        <div *ngIf="submitted && obj_form.passwordInput.errors" class="invalid-feedback">
+                            <div *ngIf="obj_form.passwordInput.errors.required">Password is required</div>
+                            <div *ngIf="obj_form.passwordInput.errors.minlength">Password must be at least 6 characters
+                            </div>
+                            <div *ngIf="obj_form.passwordInput.errors.maxlength">Maximum password length is 20
+                                characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nameInput">Name</label>
+                        <input type="text" id="nameInput" formControlName="nameInput" class="form-control"
+                               [ngClass]="{ 'is-invalid': submitted && obj_form.nameInput.errors }"/>
+                        <div *ngIf="submitted && obj_form.nameInput.errors" class="invalid-feedback">
+                            <div *ngIf="obj_form.nameInput.errors.required">Name is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailInput">Email</label>
+                        <input type="text" id="emailInput" formControlName="emailInput" class="form-control"
+                               [ngClass]="{ 'is-invalid': submitted && obj_form.emailInput.errors }"/>
+                        <div *ngIf="submitted && obj_form.emailInput.errors" class="invalid-feedback">
+                            <div *ngIf="obj_form.emailInput.errors.required">Email is required</div>
+                            <div *ngIf="obj_form.emailInput.errors.email">
+                                Please enter a valid email.
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="col-md-1 pull-right btn btn-primary btn-block">Save<span *ngIf="loading"
+                                                                                          style="margin-left: 3px"
+                                                                                          class="spinner-border spinner-border-sm mr-1"></span></button>
+                </form>
+            </div>
+        </div>
+</div>
